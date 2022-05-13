@@ -12,7 +12,6 @@ from src.features.toll_roads.segment.blueprint import segments as segments_bluep
 def create_app(config_name):
     app = Flask(__name__)
     app.config.from_object(config[config_name])
-    config[config_name].init_app(app)
     db = MongoEngine()
     db.init_app(app)
     app.register_blueprint(checkpoints_blueprint)

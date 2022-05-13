@@ -7,7 +7,7 @@ segments = Blueprint("segments", __name__, url_prefix="/segments")
 
 @segments.route("", methods=["GET"])
 def get():
-    return jsonify(get_handler())
+    return jsonify(get_handler(request.args))
 
 
 @segments.route("", methods=["POST"])

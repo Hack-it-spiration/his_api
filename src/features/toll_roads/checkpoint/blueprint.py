@@ -7,7 +7,7 @@ checkpoints = Blueprint("checkpoints", __name__, url_prefix="/checkpoints")
 
 @checkpoints.route("", methods=["GET"])
 def get():
-    return jsonify(get_handler())
+    return jsonify(get_handler(request.args))
 
 
 @checkpoints.route("", methods=["POST"])

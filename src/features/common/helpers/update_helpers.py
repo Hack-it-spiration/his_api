@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from mongoengine.errors import FieldDoesNotExist
 
 
@@ -11,3 +13,4 @@ def update_fields(update_request_body, stored_item):
 
     if unknown_fields:
         raise FieldDoesNotExist(unknown_fields)
+    stored_item["updated_at"] = datetime.now()
