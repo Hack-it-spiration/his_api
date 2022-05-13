@@ -26,8 +26,7 @@ class Segment(Document):
 
     @staticmethod
     def fetch():
-        results = Segment.objects()
-        return list(map(lambda e: e.to_dict(), results))
+        return list(map(lambda e: e.to_dict(), Segment.objects()))
 
     @staticmethod
     def insert(segment):
@@ -36,7 +35,7 @@ class Segment(Document):
         try:
             segment["start"] = Checkpoint.objects(uuid=segment["start"]).get()
             segment["end"] = Checkpoint.objects(uuid=segment["end"]).get()
-            return Segment(**segment).save(force_insert=True, validate=True)
+            return Segment(**segment).save(force_insert=True, validate=True).to_dict()
         except NotUniqueError:
             raise AlreadyExists()
         except KeyError:
@@ -53,7 +52,7 @@ class Segment(Document):
             stored_vehicle.end = Checkpoint.objects(uuid=request_body["end"]).get()
             request_body.pop("end")
         update_fields(request_body, stored_vehicle)
-        return stored_vehicle.save(validate=True)
+        return stored_vehicle.save(validate=True).to_dict()
 
     @staticmethod
     def remove(uuid):

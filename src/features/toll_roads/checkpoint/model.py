@@ -23,16 +23,23 @@ class Checkpoint(Document):
     label = StringField(required=True)
     location = GeoPointField(required=True, validation=validate_GeoPoint)
 
+    def to_dict(self):
+        return {"uuid": self.uuid, "label": self.label, "location": self.location}
+
     @staticmethod
     def fetch():
-        return Checkpoint.objects()
+        return list(map(lambda e: e.to_dict(), Checkpoint.objects()))
 
     @staticmethod
     def insert(checkpoint):
         if "uuid" not in checkpoint:
             checkpoint["uuid"] = str(uuid.uuid4())
         try:
-            return Checkpoint(**checkpoint).save(force_insert=True, validate=True)
+            return (
+                Checkpoint(**checkpoint)
+                .save(force_insert=True, validate=True)
+                .to_dict()
+            )
         except NotUniqueError:
             raise AlreadyExists()
 
@@ -40,7 +47,7 @@ class Checkpoint(Document):
     def alter(uuid, request_body):
         stored_vehicle = Checkpoint.objects(uuid=uuid).get()
         update_fields(request_body, stored_vehicle)
-        return stored_vehicle.save(validate=True)
+        return stored_vehicle.save(validate=True).to_dict()
 
     @staticmethod
     def remove(uuid):
