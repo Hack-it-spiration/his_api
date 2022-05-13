@@ -68,6 +68,34 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "checkpoint",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"location\": [3.058375, 36.776214],\n    \"label\": \"new label\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{SERVER}}/checkpoints/a79c0098-9f0b-4dd9-acba-d5afa88a66ea",
+					"protocol": "http",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"checkpoints",
+						"a79c0098-9f0b-4dd9-acba-d5afa88a66ea"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

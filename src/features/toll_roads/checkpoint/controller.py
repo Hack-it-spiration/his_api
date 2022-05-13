@@ -1,5 +1,5 @@
-from ...common.response_handlers import success_response
-from ...common.sanitizer import sanitize_request_body
+from src.features.common.response_handlers import success_response
+from src.features.common.sanitizer import sanitize_request_body
 from .model import Checkpoint
 
 
