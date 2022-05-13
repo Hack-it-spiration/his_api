@@ -15,9 +15,16 @@ class DevelopmentConfig(Config):
     }
 
 
+class TestingConfig(Config):
+    TESTING = True
+    MONGODB_SETTINGS = {
+        "host": os.getenv("MONGODB_SETTINGS"),
+    }
+
+
 config = {
     "development": DevelopmentConfig,
-    "testing": None,
+    "testing": TestingConfig,
     "production": None,
-    "default": DevelopmentConfig,
+    "default": TestingConfig,
 }
