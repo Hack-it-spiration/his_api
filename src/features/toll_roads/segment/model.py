@@ -6,8 +6,8 @@ from mongoengine import Document
 from mongoengine.errors import NotUniqueError
 from mongoengine.fields import DateTimeField, ReferenceField, StringField, UUIDField
 from src.features.common.exceptions import AlreadyExists, UnprocessableEntity
-from src.features.common.helpers.pagination_helper import page_to_slice
-from src.features.common.helpers.update_helpers import update_fields
+from src.features.common.helpers.pagination import page_to_slice
+from src.features.common.helpers.update import update_fields
 from src.features.toll_roads.checkpoint.model import Checkpoint
 
 

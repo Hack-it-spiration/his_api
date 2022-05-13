@@ -4,7 +4,7 @@ from mongoengine.errors import DoesNotExist, FieldDoesNotExist, ValidationError
 from werkzeug.exceptions import HTTPException
 
 from ..common.exceptions import APIException, UnprocessableEntity
-from .helpers.validation_errors_helper import to_std_errors
+from .helpers.validation_errors import to_std_errors
 
 
 def success_response(data):

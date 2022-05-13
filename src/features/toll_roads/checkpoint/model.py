@@ -6,8 +6,8 @@ from mongoengine import Document
 from mongoengine.errors import NotUniqueError, ValidationError
 from mongoengine.fields import DateTimeField, GeoPointField, StringField, UUIDField
 from src.features.common.exceptions import AlreadyExists
-from src.features.common.helpers.pagination_helper import page_to_slice
-from src.features.common.helpers.update_helpers import update_fields
+from src.features.common.helpers.pagination import page_to_slice
+from src.features.common.helpers.update import update_fields
 
 
 def validate_GeoPoint(value):

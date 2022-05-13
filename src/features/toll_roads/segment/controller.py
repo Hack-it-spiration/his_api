@@ -1,5 +1,5 @@
 from flask import current_app
-from src.features.common.helpers.pagination_helper import get_pagination_params
+from src.features.common.helpers.pagination import get_pagination_params
 from src.features.common.response_handlers import success_response
 from src.features.common.sanitizer import sanitize_request_body
 
