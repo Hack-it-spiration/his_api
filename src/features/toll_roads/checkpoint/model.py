@@ -33,7 +33,7 @@ class Checkpoint(Document):
             checkpoint["uuid"] = str(uuid.uuid4())
         try:
             return Checkpoint(**checkpoint).save(force_insert=True, validate=True)
-        except NotUniqueError as e:
+        except NotUniqueError:
             raise AlreadyExists()
 
     @staticmethod
