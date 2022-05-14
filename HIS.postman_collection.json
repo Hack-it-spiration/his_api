@@ -6,96 +6,218 @@
 	},
 	"item": [
 		{
-			"name": "checkpoints",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://{{SERVER}}/checkpoints",
-					"protocol": "http",
-					"host": [
-						"{{SERVER}}"
-					],
-					"path": [
-						"checkpoints"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "checkpoint",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"uuid\": \"a79c0098-9f0b-4dd9-acba-d5afa88a66ea\",\n    \"location\": [3.058375, 36.776214],\n    \"label\": \"s\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"item": [
+				{
+					"name": "checkpoints",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{SERVER}}/checkpoints?page=0&pageSize=10",
+							"protocol": "http",
+							"host": [
+								"{{SERVER}}"
+							],
+							"path": [
+								"checkpoints"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "pageSize",
+									"value": "10"
+								}
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://{{SERVER}}/checkpoints",
-					"protocol": "http",
-					"host": [
-						"{{SERVER}}"
-					],
-					"path": [
-						"checkpoints"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "checkpoint",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://{{SERVER}}/checkpoints/a79c0098-9f0b-4dd9-acba-d5afa88a66ef",
-					"protocol": "http",
-					"host": [
-						"{{SERVER}}"
-					],
-					"path": [
-						"checkpoints",
-						"a79c0098-9f0b-4dd9-acba-d5afa88a66ef"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "checkpoint",
-			"request": {
-				"method": "PATCH",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"location\": [3.058375, 36.776214],\n    \"label\": \"new label\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "checkpoint",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"location\": [3.058375, 36.776214],\n    \"label\": \"aa\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{SERVER}}/checkpoints",
+							"protocol": "http",
+							"host": [
+								"{{SERVER}}"
+							],
+							"path": [
+								"checkpoints"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://{{SERVER}}/checkpoints/a79c0098-9f0b-4dd9-acba-d5afa88a66ea",
-					"protocol": "http",
-					"host": [
-						"{{SERVER}}"
-					],
-					"path": [
-						"checkpoints",
-						"a79c0098-9f0b-4dd9-acba-d5afa88a66ea"
-					]
+				{
+					"name": "checkpoint",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{SERVER}}/checkpoints/a79c0098-9f0b-4dd9-acba-d5afa88a66ef",
+							"protocol": "http",
+							"host": [
+								"{{SERVER}}"
+							],
+							"path": [
+								"checkpoints",
+								"a79c0098-9f0b-4dd9-acba-d5afa88a66ef"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "checkpoint",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"location\": [3.058375, 36.776214],\n    \"label\": \"new label 22\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{SERVER}}/checkpoints/a79c0098-9f0b-4dd9-acba-d5afa88a66ea",
+							"protocol": "http",
+							"host": [
+								"{{SERVER}}"
+							],
+							"path": [
+								"checkpoints",
+								"a79c0098-9f0b-4dd9-acba-d5afa88a66ea"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
+		},
+		{
+			"name": "segment",
+			"item": [
+				{
+					"name": "segments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{SERVER}}/segments?page=0&pageSize=2",
+							"protocol": "http",
+							"host": [
+								"{{SERVER}}"
+							],
+							"path": [
+								"segments"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "pageSize",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "segments",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"label\": \"azazaz\",\n    \"start\": \"a79c0098-9f0b-4dd9-acba-d5afa88a66ea\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{SERVER}}/segments/ee767115-6644-42c1-bea4-17e0aefea47a",
+							"protocol": "http",
+							"host": [
+								"{{SERVER}}"
+							],
+							"path": [
+								"segments",
+								"ee767115-6644-42c1-bea4-17e0aefea47a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "segments",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{SERVER}}/segments/9921eb5c-b344-45f1-bdc7-c0af92f89aab",
+							"protocol": "http",
+							"host": [
+								"{{SERVER}}"
+							],
+							"path": [
+								"segments",
+								"9921eb5c-b344-45f1-bdc7-c0af92f89aab"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "segments",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"start\": \"b639b0be-fa59-48a5-ae53-be3651f6fff0\",\n    \"end\": \"8bb79a87-83a3-4021-8080-5a50fc2426d4\",\n    \"label\": \"a6\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{SERVER}}/segments",
+							"protocol": "http",
+							"host": [
+								"{{SERVER}}"
+							],
+							"path": [
+								"segments"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
