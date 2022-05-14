@@ -8,6 +8,8 @@ from src.features.toll_roads.checkpoint.blueprint import (
 )
 from src.features.toll_roads.segment.blueprint import segments as segments_blueprint
 
+from src.features.ml_model.blueprint import model as model_blueprint
+
 
 def create_app(config_name):
     app = Flask(__name__)
@@ -16,7 +18,7 @@ def create_app(config_name):
     db.init_app(app)
     app.register_blueprint(checkpoints_blueprint)
     app.register_blueprint(segments_blueprint)
-
+    app.register_blueprint(model_blueprint)
     for error, handler in error_handlers.items():
         app.register_error_handler(error, handler)
     return app
