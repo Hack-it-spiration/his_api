@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "26d0c667-40cd-4d7a-9136-20db3cfcf9f0",
-		"name": "HIS",
+		"_postman_id": "e25cf12f-891f-493e-9961-0cb4ff634bc8",
+		"name": "Smart Way API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -14,10 +14,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://{{SERVER}}/checkpoints?page=0&pageSize=10",
-							"protocol": "http",
+							"raw": "https://hackit-his-api.herokuapp.com/checkpoints?page=0&pageSize=10",
+							"protocol": "https",
 							"host": [
-								"{{SERVER}}"
+								"hackit-his-api",
+								"herokuapp",
+								"com"
 							],
 							"path": [
 								"checkpoints"
@@ -43,7 +45,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"location\": [3.058375, 36.776214],\n    \"label\": \"aa\"\n}",
+							"raw": "{\n    \"location\": [36.447383, 2.589165],\n    \"label\": \"El Affroun\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -51,10 +53,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://{{SERVER}}/checkpoints",
-							"protocol": "http",
+							"raw": "https://hackit-his-api.herokuapp.com/checkpoints",
+							"protocol": "https",
 							"host": [
-								"{{SERVER}}"
+								"hackit-his-api",
+								"herokuapp",
+								"com"
 							],
 							"path": [
 								"checkpoints"
@@ -69,14 +73,16 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://{{SERVER}}/checkpoints/a79c0098-9f0b-4dd9-acba-d5afa88a66ef",
-							"protocol": "http",
+							"raw": "https://hackit-his-api.herokuapp.com/checkpoints/310333ac-2ad2-4697-82e9-e30236ff8874",
+							"protocol": "https",
 							"host": [
-								"{{SERVER}}"
+								"hackit-his-api",
+								"herokuapp",
+								"com"
 							],
 							"path": [
 								"checkpoints",
-								"a79c0098-9f0b-4dd9-acba-d5afa88a66ef"
+								"310333ac-2ad2-4697-82e9-e30236ff8874"
 							]
 						}
 					},
@@ -89,7 +95,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"location\": [3.058375, 36.776214],\n    \"label\": \"new label 22\"\n}",
+							"raw": "{\n    \"label\": \"new label\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -97,14 +103,16 @@
 							}
 						},
 						"url": {
-							"raw": "http://{{SERVER}}/checkpoints/a79c0098-9f0b-4dd9-acba-d5afa88a66ea",
-							"protocol": "http",
+							"raw": "https://hackit-his-api.herokuapp.com/checkpoints/310333ac-2ad2-4697-82e9-e30236ff8874",
+							"protocol": "https",
 							"host": [
-								"{{SERVER}}"
+								"hackit-his-api",
+								"herokuapp",
+								"com"
 							],
 							"path": [
 								"checkpoints",
-								"a79c0098-9f0b-4dd9-acba-d5afa88a66ea"
+								"310333ac-2ad2-4697-82e9-e30236ff8874"
 							]
 						}
 					},
@@ -121,10 +129,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://{{SERVER}}/segments?page=0&pageSize=2",
-							"protocol": "http",
+							"raw": "https://hackit-his-api.herokuapp.com/segments?page=0&pageSize=5",
+							"protocol": "https",
 							"host": [
-								"{{SERVER}}"
+								"hackit-his-api",
+								"herokuapp",
+								"com"
 							],
 							"path": [
 								"segments"
@@ -136,7 +146,7 @@
 								},
 								{
 									"key": "pageSize",
-									"value": "2"
+									"value": "5"
 								}
 							]
 						}
@@ -150,7 +160,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"label\": \"azazaz\",\n    \"start\": \"a79c0098-9f0b-4dd9-acba-d5afa88a66ea\"\n}",
+							"raw": "{\n    \"label\": \"new label\",\n    \"start\": \"cd0bd2d0-f95f-41ea-8c69-b5614215d27d\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -158,10 +168,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://{{SERVER}}/segments/ee767115-6644-42c1-bea4-17e0aefea47a",
-							"protocol": "http",
+							"raw": "https://hackit-his-api.herokuapp.com/segments/ee767115-6644-42c1-bea4-17e0aefea47a",
+							"protocol": "https",
 							"host": [
-								"{{SERVER}}"
+								"hackit-his-api",
+								"herokuapp",
+								"com"
 							],
 							"path": [
 								"segments",
@@ -177,14 +189,16 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://{{SERVER}}/segments/9921eb5c-b344-45f1-bdc7-c0af92f89aab",
-							"protocol": "http",
+							"raw": "https://hackit-his-api.herokuapp.com/segments/ee767115-6644-42c1-bea4-17e0aefea47a",
+							"protocol": "https",
 							"host": [
-								"{{SERVER}}"
+								"hackit-his-api",
+								"herokuapp",
+								"com"
 							],
 							"path": [
 								"segments",
-								"9921eb5c-b344-45f1-bdc7-c0af92f89aab"
+								"ee767115-6644-42c1-bea4-17e0aefea47a"
 							]
 						}
 					},
@@ -197,7 +211,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"start\": \"b639b0be-fa59-48a5-ae53-be3651f6fff0\",\n    \"end\": \"8bb79a87-83a3-4021-8080-5a50fc2426d4\",\n    \"label\": \"a6\"\n}",
+							"raw": "{\n    \"start\": \"a40f5e37-bbbd-4829-87a7-8b677c27393f\",\n    \"end\": \"782cfeac-fdc3-4326-bdfa-7a67e80ecd0c\",\n    \"label\": \"Sidi Saada-El Hamadna\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -205,10 +219,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://{{SERVER}}/segments",
-							"protocol": "http",
+							"raw": "https://hackit-his-api.herokuapp.com/segments",
+							"protocol": "https",
 							"host": [
-								"{{SERVER}}"
+								"hackit-his-api",
+								"herokuapp",
+								"com"
 							],
 							"path": [
 								"segments"
@@ -220,41 +236,33 @@
 			]
 		},
 		{
-			"name": "model",
-			"item": [
-				{
-					"name": "predictions",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"uuid\": \"77bc977d-3caf-46db-9c58-ca8169c036e5\",\n    \"datetime\": \"2022/05/13 20:00\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://127.0.0.1:5500/prediction",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "5500",
-							"path": [
-								"prediction"
-							]
-						},
-						"description": "**Accident severity prediction**\n\nThis endpoint takes the id of a route segment and the datetime of the requested segment"
-					},
-					"response": []
+			"name": "ml-model",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"uuid\": \"6a3f3943-ef08-4bad-8dcc-511e279b6073\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://hackit-his-api.herokuapp.com/prediction",
+					"protocol": "https",
+					"host": [
+						"hackit-his-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"prediction"
+					]
 				}
-			]
+			},
+			"response": []
 		}
 	]
 }
