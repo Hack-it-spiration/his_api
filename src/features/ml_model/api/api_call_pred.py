@@ -6,10 +6,7 @@ import numpy as np
 import pandas as pd
 import requests
 
-from .config import Config
-
-weatherKey = Config["weatherKey"]
-googlekey = os.getenv("GOOGLE_API_KEY")
+google_key = os.getenv("GOOGLE_API_KEY")
 
 
 script_path = os.path.dirname(os.path.abspath(__file__ + "/../"))
@@ -26,7 +23,6 @@ def call_google(origin, destination, googlekey):
     URL = "https://maps.googleapis.com/maps/api/directions/json"
     res = requests.get(url=URL, params=PARAMS)
     data = res.json()
-    print(data, "2")
     # parse json to retrieve all lat-lng
     waypoints = data["routes"][0]["legs"]
 
@@ -44,8 +40,6 @@ def call_google(origin, destination, googlekey):
 
     lats = tuple(lats)
     longs = tuple(longs)
-    print("total waypoints: " + str(google_count_lat_long))
-
     return lats, longs, google_count_lat_long
 
 
@@ -108,7 +102,6 @@ def call_weatherapi(place, weatherKey):
     )
     w_response = requests.get(weather_url)
     w_data = w_response.json()
-    print(w_data, 3)
 
     weather_data_for_model = {}
     for key, val in api_to_model.items():
@@ -127,12 +120,12 @@ def call_weatherapi(place, weatherKey):
     return weather
 
 
-def api_call(origin, origin_name):
+def api_call(origin, origin_name, weather_key):
 
     lat = origin.split(",")[0]
     long = origin.split(",")[1]
 
-    weather = call_weatherapi(origin_name, weatherKey)
+    weather = call_weatherapi(origin_name, weather_key)
     # merge with accident data - df with latlong and weather
     position = pd.DataFrame({"Start_Lat": [lat], "Start_Long": [long]})
 

@@ -21,6 +21,7 @@ class TestingConfig(Config):
     MONGODB_SETTINGS = {
         "host": os.getenv("MONGODB_SETTINGS"),
     }
+    WEATHERKEY = "ca5bb720e4bc43c5d80d9aab5b963c7d"
 
 
 config = {
