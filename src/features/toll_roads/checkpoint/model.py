@@ -1,6 +1,7 @@
 import uuid
 from datetime import datetime
 
+from flask import current_app
 from mongoengine import Document
 from mongoengine.errors import NotUniqueError, ValidationError
 from mongoengine.fields import DateTimeField, GeoPointField, StringField, UUIDField
@@ -32,8 +33,12 @@ class Checkpoint(Document):
             "uuid": self.uuid,
             "label": self.label,
             "location": self.location,
-            "created_at": self.created_at,
-            "updated_at": self.updated_at,
+            "created_at": self.created_at.strftime(
+                current_app.config["DATE_TIME_FORMAT"]
+            ),
+            "updated_at": self.updated_at.strftime(
+                current_app.config["DATE_TIME_FORMAT"]
+            ),
         }
 
     @staticmethod

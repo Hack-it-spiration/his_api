@@ -4,6 +4,7 @@ import os
 class Config:
     SECRET_KEY = os.urandom(32)
     DEFAULT_ITEM_PER_PAGE = 5
+    DATE_TIME_FORMAT = "%d-%m-%Y %H:%M:%S"
 
 
 class DevelopmentConfig(Config):

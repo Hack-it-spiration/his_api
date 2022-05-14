@@ -2,6 +2,7 @@ import uuid
 from copy import deepcopy
 from datetime import datetime
 
+from flask import current_app
 from mongoengine import Document
 from mongoengine.errors import NotUniqueError
 from mongoengine.fields import DateTimeField, ReferenceField, StringField, UUIDField
@@ -26,8 +27,12 @@ class Segment(Document):
             "start": self.start.uuid,
             "end": self.end.uuid,
             "label": self.label,
-            "created_at": self.created_at,
-            "updated_at": self.updated_at,
+            "created_at": self.created_at.strftime(
+                current_app.config["DATE_TIME_FORMAT"]
+            ),
+            "updated_at": self.updated_at.strftime(
+                current_app.config["DATE_TIME_FORMAT"]
+            ),
         }
 
     @staticmethod
