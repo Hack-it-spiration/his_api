@@ -83,14 +83,16 @@ def calc_distance(accident_dataset, lats, longs, google_count_lat_long):
 
     new["a"] = (
         np.sin(new["dlat"] / 2) ** 2
-        + np.cos(new["lat1"]) * np.cos(new["lat2"]) * np.sin(new["dlon"] / 2) ** 2
+        + np.cos(new["lat1"]) * np.cos(new["lat2"]) *
+        np.sin(new["dlon"] / 2) ** 2
     )
-    new["distance"] = R * (2 * np.arctan2(np.sqrt(new["a"]), np.sqrt(1 - new["a"])))
+    new["distance"] = R * \
+        (2 * np.arctan2(np.sqrt(new["a"]), np.sqrt(1 - new["a"])))
 
     return new
 
 
-def call_weatherapi(place, weatherKey, tm):
+def call_weatherapi(place, weatherKey):
     api_to_model = {
         "temperature": "Temperature(F)",
         "feelslike": "Wind_Chill(F)",
@@ -163,7 +165,7 @@ def call_weatherapi(place, weatherKey, tm):
 #     return processed_results
 
 
-def api_call(origin, destination, origin_name, destination_name, tm):
+def api_call(origin, destination, origin_name, destination_name):
 
     lat = origin.split(",")[0]
     long = origin.split(",")[1]
@@ -178,7 +180,7 @@ def api_call(origin, destination, origin_name, destination_name, tm):
     # calculate distance between past accident points and route
     # dist = calc_distance(accident_dataset, lats, longs, google_count_lat_long)
 
-    weather = call_weatherapi(origin_name, weatherKey, tm)
+    weather = call_weatherapi(origin_name, weatherKey)
     # merge with accident data - df with latlong and weather
     position = pd.DataFrame({"Start_Lat": [lat], "Start_Long": [long]})
 

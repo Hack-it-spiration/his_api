@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "da974970-de42-4df9-9ebe-5277bf9caa23",
+		"_postman_id": "26d0c667-40cd-4d7a-9136-20db3cfcf9f0",
 		"name": "HIS",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -214,6 +214,43 @@
 								"segments"
 							]
 						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "model",
+			"item": [
+				{
+					"name": "predictions",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"uuid\": \"77bc977d-3caf-46db-9c58-ca8169c036e5\",\n    \"datetime\": \"2022/05/13 20:00\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5500/prediction",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5500",
+							"path": [
+								"prediction"
+							]
+						},
+						"description": "**Accident severity prediction**\n\nThis endpoint takes the id of a route segment and the datetime of the requested segment"
 					},
 					"response": []
 				}
