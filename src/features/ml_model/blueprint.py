@@ -14,20 +14,20 @@ model = Blueprint('model', __name__)
 def prediction():
     try:
         req_data = request.get_json()
-        # _uuid = req_data["uuid"]
+        _uuid = req_data["uuid"]
         date_time = req_data['datetime']
-        # segment = Segment.objects(uuid=_uuid).get()
+        segment = Segment.objects(uuid=_uuid).get()
 
-        # origin = ",".join([str(_) for _ in segment.start.location])
-        # orgin_name = segment.start.label
-        # destination = ",".join([str(_) for _ in segment.end.location])
-        # destination_name = segment.end.label
+        origin = ",".join([str(_) for _ in segment.start.location])
+        origin_name = segment.start.label
+        destination = ",".join([str(_) for _ in segment.end.location])
+        destination_name = segment.end.label
         # print(origin)
 
-        origin = req_data["origin"]
-        destination = req_data["destination"]
-        origin_name = "London"
-        destination_name = ""
+        # origin = req_data["origin"]
+        # destination = req_data["destination"]
+        # origin_name = "London"
+        # destination_name = ""
         # process time
         tm = datetime.datetime.strptime(
             date_time, '%Y/%m/%d %H:%M').strftime('%Y-%m-%dT%H:%M')
