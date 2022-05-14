@@ -1,7 +1,7 @@
 from mongoengine import Document
 from mongoengine.fields import UUIDField, StringField, ReferenceField
 
-from features.toll_roads.checkpoint.model import Checkpoint
+from src.features.toll_roads.checkpoint.model import Checkpoint
 
 
 class Segment(Document):
