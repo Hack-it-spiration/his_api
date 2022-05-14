@@ -1,10 +1,13 @@
 ## Smart Way API
 
-This API is a 34 hours work for the CSE infamous hackathon HACK !T in its 3rd edition 2022. [Link to event website](https://cse-hackit-2k22.cse.club/?fbclid=IwAR3mTsmTSrF91ot9eii6jG55SYlqSoPK5IoJvoXt3-ZRPgeSyOfutvy8nYo).
-Smart Way is a roads and highways intellegent system API that exposes endpoints for:  
+This API is a 34 hours work for the CSE hackathon HACK!T in its 3rd edition 2022 ([Link to event website](https://cse-hackit-2k22.cse.club/?fbclid=IwAR3mTsmTSrF91ot9eii6jG55SYlqSoPK5IoJvoXt3-ZRPgeSyOfutvy8nYo))
+
+Smart Way is a roads and highways intellegent system API that exposes endpoints for :  
 
 * Road checkpoints and segments
 * Prediction of accidants severity in segments
+
+[See the initial documentation](https://documenter.getpostman.com/view/13171866/UyxjEkWB) with Postman
 
 ## Smart Way ML Model
 
