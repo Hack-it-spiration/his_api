@@ -1,9 +1,11 @@
-import requests
-import pandas as pd
-import numpy as np
 import itertools
 import os
+
 import joblib
+import numpy as np
+import pandas as pd
+import requests
+
 from .config import Config
 
 weatherKey = Config["weatherKey"]
@@ -11,9 +13,7 @@ googlekey = os.getenv("GOOGLE_API_KEY")
 
 
 script_path = os.path.dirname(os.path.abspath(__file__ + "/../"))
-# accident_dataset = pd.read_csv(script_path + "/data/only_accident_points.csv")
 
-# Load  model nad model columns
 model = joblib.load(script_path + "/saved_model/model.sav")
 
 
@@ -38,7 +38,6 @@ def call_google(origin, destination, googlekey):
     for leg in waypoints:
         for step in leg["steps"]:
             start_loc = step["start_location"]
-            # print("lat: " + str(start_loc['lat']) + ", lng: " + str(start_loc['lng']))
             lats.append(start_loc["lat"])
             longs.append(start_loc["lng"])
             google_count_lat_long += 1
@@ -64,18 +63,14 @@ def calc_distance(accident_dataset, lats, longs, google_count_lat_long):
         itertools.chain.from_iterable(
             itertools.repeat(x, accident_point_counts) for x in lats
         )
-    )  # repeat 9746 times
+    )
     longs_r = list(
         itertools.chain.from_iterable(
             itertools.repeat(x, accident_point_counts) for x in longs
         )
     )
-
-    # append
     new["lat2"] = np.radians(lats_r)
     new["long2"] = np.radians(longs_r)
-
-    # cal radiun50m
     new["lat1"] = np.radians(new["Latitude"])
     new["long1"] = np.radians(new["Longitude"])
     new["dlon"] = new["long2"] - new["long1"]
@@ -83,11 +78,9 @@ def calc_distance(accident_dataset, lats, longs, google_count_lat_long):
 
     new["a"] = (
         np.sin(new["dlat"] / 2) ** 2
-        + np.cos(new["lat1"]) * np.cos(new["lat2"]) *
-        np.sin(new["dlon"] / 2) ** 2
+        + np.cos(new["lat1"]) * np.cos(new["lat2"]) * np.sin(new["dlon"] / 2) ** 2
     )
-    new["distance"] = R * \
-        (2 * np.arctan2(np.sqrt(new["a"]), np.sqrt(1 - new["a"])))
+    new["distance"] = R * (2 * np.arctan2(np.sqrt(new["a"]), np.sqrt(1 - new["a"])))
 
     return new
 
@@ -134,51 +127,10 @@ def call_weatherapi(place, weatherKey):
     return weather
 
 
-# def model_pred(new_df):
-
-#     # do prediction for current datetime for all
-#     prob = pd.DataFrame(model.predict(new_df),
-#                         columns=['No', 'probability'])
-#     prob = prob[['probability']]
-#     # merge with long lat
-#     output = prob.merge(new_df[['Latitude', 'Longitude']],
-#                         how='outer', left_index=True, right_index=True)
-
-#     # drop duplicates of same lat long (multiple accidents)
-#     output["Latitude"] = round(output["Latitude"], 5)
-#     output["Longitude"] = round(output["Longitude"], 5)
-#     output = output.drop_duplicates(
-#         subset=['Longitude', 'Latitude'], keep="last")
-
-#     # to json
-#     processed_results = []
-#     for index, row in output.iterrows():
-#         lat = float(row['Latitude'])
-#         long = float(row['Longitude'])
-#         prob = float(row['probability'])
-
-#         result = {'lat': lat, 'lng': long, 'probability': prob}
-#         processed_results.append(result)
-
-#     print("total accident count:", len(output))
-
-#     return processed_results
-
-
-def api_call(origin, destination, origin_name, destination_name):
+def api_call(origin, origin_name):
 
     lat = origin.split(",")[0]
     long = origin.split(",")[1]
-
-    # parse time
-    # datetime_object = datetime.datetime.strptime(tm, '%Y-%m-%dT%H:%M')
-
-    # get route planning
-    # lats, longs, google_count_lat_long = call_google(
-    #     origin, destination, googlekey)
-
-    # calculate distance between past accident points and route
-    # dist = calc_distance(accident_dataset, lats, longs, google_count_lat_long)
 
     weather = call_weatherapi(origin_name, weatherKey)
     # merge with accident data - df with latlong and weather
@@ -188,9 +140,6 @@ def api_call(origin, destination, origin_name, destination_name):
 
     # run model predicition
     final = {}
-    print(final_df)
-    # print(final_df)
     final["severity"] = int(model.predict(final_df).squeeze())
-    print(int(model.predict(final_df).squeeze()))
 
     return final
